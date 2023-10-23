@@ -6,7 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity(name = "tb_pedido")
 @Getter
@@ -20,10 +22,15 @@ public class Pedido {
     private Long id;
 
     @Column(precision = 13, scale = 2)
-    private String valorTotal;
+    private BigDecimal valorTotal;
 
-    private LocalDate dataPedido;
+    private LocalDateTime dataPedido;
+
+//    @OneToMany(mappedBy = "pedido",fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Item> items;
 
     @ManyToOne
     private Cliente cliente;
+
 }
