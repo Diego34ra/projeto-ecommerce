@@ -26,7 +26,6 @@ public class Pedido {
 
     private LocalDateTime dataPedido;
 
-//    @OneToMany(mappedBy = "pedido",fetch = FetchType.EAGER)
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Item> items;
 

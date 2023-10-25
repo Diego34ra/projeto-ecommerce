@@ -29,4 +29,10 @@ public class PedidoController {
         return ResponseEntity.status(HttpStatus.OK).body(pedido);
     }
 
+    @DeleteMapping("{id}")
+    public ResponseEntity<MessageResponseDTO> deleteById(Long id) throws ResourceNotFoundException {
+        var message = pedidoService.deleteById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(message);
+    }
+
 }

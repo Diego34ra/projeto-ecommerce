@@ -10,4 +10,6 @@ public interface PedidoService {
     MessageResponseDTO create(PedidoDTO pedidoDTO) throws ResourceNotFoundException;
 
     Pedido findById(Long id) throws ResourceNotFoundException;
+
+    MessageResponseDTO deleteById(Long id) throws ResourceNotFoundException;
 }

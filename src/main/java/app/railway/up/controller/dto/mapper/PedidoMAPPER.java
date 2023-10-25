@@ -10,7 +10,7 @@ public class PedidoMAPPER {
 
     private static final ModelMapper MODEL_MAPPER = new ModelMapper();
 
-    public Pedido toPedidoCreate(PedidoDTO pedidoDTO){
+    public Pedido toPedido(PedidoDTO pedidoDTO){
         return MODEL_MAPPER.map(pedidoDTO, Pedido.class);
     }
 }

@@ -1,5 +1,7 @@
 package app.railway.up.service.impl;
 
+import app.railway.up.controller.dto.mapper.ClienteMAPPER;
+import app.railway.up.controller.dto.request.ClienteDTO;
 import app.railway.up.controller.dto.request.MessageResponseDTO;
 import app.railway.up.controller.exceptions.ResourceNotFoundException;
 import app.railway.up.model.Cliente;
@@ -16,8 +18,13 @@ public class ClienteServiceImpl implements ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
+    @Autowired
+    private ClienteMAPPER clienteMAPPER;
+
     @Override
-    public MessageResponseDTO create(Cliente cliente) {
+    public MessageResponseDTO create(ClienteDTO clienteDTO) {
+        Cliente cliente = clienteMAPPER.toCliente(clienteDTO);
+        cliente.setStatus("PEN");
         clienteRepository.save(cliente);
         return MessageResponseDTO.builder()
                 .code(201)
@@ -41,6 +48,49 @@ public class ClienteServiceImpl implements ClienteService {
                 .code(200)
                 .status("Ok")
                 .message("Cliente deletado com sucesso.")
+                .build();
+    }
+
+    @Override
+    public MessageResponseDTO update(Long id, Cliente clienteUpdate) throws ResourceNotFoundException {
+        Cliente cliente = findById(id);
+        cliente.setNome(clienteUpdate.getNome());
+        cliente.setLimite(clienteUpdate.getLimite());
+        cliente.setEmail(clienteUpdate.getEmail());
+        cliente.setStatus(clienteUpdate.getStatus());
+        cliente.setEndereco(clienteUpdate.getEndereco());
+        clienteRepository.save(cliente);
+        return MessageResponseDTO
+                .builder()
+                .code(200)
+                .status("Ok")
+                .message("Cliente atualizado com sucesso.")
+                .build();
+    }
+
+    @Override
+    public MessageResponseDTO patchLimite(Long id, Cliente clienteUpdate) throws ResourceNotFoundException {
+        Cliente cliente = findById(id);
+        cliente.setLimite(clienteUpdate.getLimite());
+        clienteRepository.save(cliente);
+        return MessageResponseDTO
+                .builder()
+                .code(200)
+                .status("Ok")
+                .message("Limite atualizado com sucesso.")
+                .build();
+    }
+
+    @Override
+    public MessageResponseDTO patchStatus(Long id, Cliente clienteUpdate) throws ResourceNotFoundException {
+        Cliente cliente = findById(id);
+        cliente.setStatus(clienteUpdate.getStatus());
+        clienteRepository.save(cliente);
+        return MessageResponseDTO
+                .builder()
+                .code(200)
+                .status("Ok")
+                .message("Status atualizado com sucesso.")
                 .build();
     }
 

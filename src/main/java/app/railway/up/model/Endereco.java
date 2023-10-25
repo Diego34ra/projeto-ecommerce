@@ -1,28 +1,32 @@
 package app.railway.up.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "tb_item")
+@Entity(name = "tb_endereco")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Item {
+public class Endereco {
+
     @Id
     @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//    @ManyToOne
-//    @JsonIgnore
-//    private Pedido pedido;
 
-    @ManyToOne
-    private Produto produto;
+    private String endereco;
 
-    private Long quantidade;
+    private String complemento;
+
+    private String numero;
+
+    private String cep;
 }

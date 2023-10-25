@@ -35,18 +35,14 @@ public class PedidoServiceImpl implements PedidoService {
     private ProdutoService produtoService;
 
     @Autowired
-    private ItemService itemService;
-
-    @Autowired
     private PedidoMAPPER pedidoMAPPER;
     @Override
     public MessageResponseDTO create(PedidoDTO pedidoDTO) throws ResourceNotFoundException {
-        Pedido pedido = pedidoMAPPER.toPedidoCreate(pedidoDTO);
+        Pedido pedido = pedidoMAPPER.toPedido(pedidoDTO);
         Cliente cliente = clienteService.findById(pedido.getCliente().getId());
         pedido.setCliente(cliente);
         pedido.setDataPedido(LocalDateTime.now());
         pedido.setValorTotal(getValorTotal(pedido.getItems()));
-//        createItems(pedido.getItems(),pedido);
         pedidoRepository.save(pedido);
         return MessageResponseDTO
                 .builder()
@@ -62,9 +58,16 @@ public class PedidoServiceImpl implements PedidoService {
         return pedidoOptional.orElseThrow(() -> new ResourceNotFoundException("Pedido com id "+id+ " não encontrado."));
     }
 
-    public void createItems(List<Item> items, Pedido pedido){
-//        items = items.stream().peek(item -> item.setPedido(pedido)).collect(Collectors.toList());
-        itemService.create(items);
+    @Override
+    public MessageResponseDTO deleteById(Long id) throws ResourceNotFoundException {
+        findById(id);
+        pedidoRepository.deleteById(id);
+        return MessageResponseDTO
+                .builder()
+                .code(200)
+                .status("Ok")
+                .message("Pedido deletado com sucesso.")
+                .build();
     }
 
     public BigDecimal getValorTotal(List<Item> items){
@@ -77,7 +80,7 @@ public class PedidoServiceImpl implements PedidoService {
                         throw new RuntimeException(e);
                     }
                     produto.setEstoque(produto.getEstoque() - item.getQuantidade());
-                    produtoService.atualizaPreco(produto);
+                    produtoService.updateEstoque(produto);
                     return produto.getPreco().multiply(BigDecimal.valueOf(item.getQuantidade()));
                 })
                 .reduce(BigDecimal.ZERO, BigDecimal::add);

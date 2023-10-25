@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity(name = "tb_cliente")
@@ -22,7 +23,13 @@ public class Cliente {
 
     private String email;
 
-    private String endereco;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private List<Endereco> enderecos;
+
+    @Column(precision = 10,scale = 2)
+    private BigDecimal limite;
+
+    private String status;
 
     @OneToMany(mappedBy = "cliente")
     @JsonIgnore

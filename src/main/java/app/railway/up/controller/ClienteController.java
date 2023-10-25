@@ -1,5 +1,6 @@
 package app.railway.up.controller;
 
+import app.railway.up.controller.dto.request.ClienteDTO;
 import app.railway.up.controller.dto.request.MessageResponseDTO;
 import app.railway.up.controller.exceptions.ResourceNotFoundException;
 import app.railway.up.model.Cliente;
@@ -17,8 +18,8 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
     @PostMapping
-    public ResponseEntity<MessageResponseDTO> create(@RequestBody Cliente cliente){
-        var message = clienteService.create(cliente);
+    public ResponseEntity<MessageResponseDTO> create(@RequestBody ClienteDTO clienteDTO){
+        var message = clienteService.create(clienteDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(message);
     }
 
@@ -26,6 +27,24 @@ public class ClienteController {
     public ResponseEntity<Cliente> findById(@PathVariable Long id) throws ResourceNotFoundException {
         Cliente cliente = clienteService.findById(id);
         return ResponseEntity.status(HttpStatus.OK).body(cliente);
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<MessageResponseDTO> update(@PathVariable Long id, @RequestBody Cliente cliente) throws ResourceNotFoundException {
+        var message = clienteService.update(id,cliente);
+        return ResponseEntity.status(HttpStatus.OK).body(message);
+    }
+
+    @PatchMapping("{id}/limite")
+    public ResponseEntity<MessageResponseDTO> patchLimite(@PathVariable Long id, @RequestBody Cliente cliente) throws ResourceNotFoundException {
+        var message = clienteService.patchLimite(id,cliente);
+        return ResponseEntity.status(HttpStatus.OK).body(message);
+    }
+
+    @PatchMapping("{id}/status")
+    public ResponseEntity<MessageResponseDTO> patchStatus(@PathVariable Long id, @RequestBody Cliente cliente) throws ResourceNotFoundException {
+        var message = clienteService.patchLimite(id,cliente);
+        return ResponseEntity.status(HttpStatus.OK).body(message);
     }
 
     @DeleteMapping("{id}")
