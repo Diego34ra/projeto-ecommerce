@@ -1,9 +1,5 @@
-package app.railway.up.controller.dto.request;
+package app.railway.up.controllers.dto.request;
 
-import app.railway.up.model.Item;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Column;
-import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 

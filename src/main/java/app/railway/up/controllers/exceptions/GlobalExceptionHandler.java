@@ -1,4 +1,4 @@
-package app.railway.up.controller.exceptions;
+package app.railway.up.controllers.exceptions;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;

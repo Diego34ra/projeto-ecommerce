@@ -1,6 +1,7 @@
-package app.railway.up.controller.dto.request;
+package app.railway.up.controllers.dto.request;
 
 import app.railway.up.model.Endereco;
+import app.railway.up.model.Telefone;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +16,9 @@ public class ClienteDTO {
 
     private String email;
 
-    private List<Endereco> endereco;
+    private List<Endereco> enderecos;
+
+    private List<Telefone> telefones;
 
     private BigDecimal limite;
 }

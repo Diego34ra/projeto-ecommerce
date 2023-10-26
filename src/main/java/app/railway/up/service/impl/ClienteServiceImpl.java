@@ -1,15 +1,16 @@
 package app.railway.up.service.impl;
 
-import app.railway.up.controller.dto.mapper.ClienteMAPPER;
-import app.railway.up.controller.dto.request.ClienteDTO;
-import app.railway.up.controller.dto.request.MessageResponseDTO;
-import app.railway.up.controller.exceptions.ResourceNotFoundException;
+import app.railway.up.controllers.dto.mapper.ClienteMAPPER;
+import app.railway.up.controllers.dto.request.ClienteDTO;
+import app.railway.up.controllers.dto.request.MessageResponseDTO;
+import app.railway.up.controllers.exceptions.ResourceNotFoundException;
 import app.railway.up.model.Cliente;
 import app.railway.up.repository.ClienteRepository;
 import app.railway.up.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,6 +32,11 @@ public class ClienteServiceImpl implements ClienteService {
                 .status("Created")
                 .message("Cliente cadastrado com sucesso.")
                 .build();
+    }
+
+    @Override
+    public List<Cliente> findAll(){
+        return clienteRepository.findAll();
     }
 
     @Override
@@ -58,7 +64,7 @@ public class ClienteServiceImpl implements ClienteService {
         cliente.setLimite(clienteUpdate.getLimite());
         cliente.setEmail(clienteUpdate.getEmail());
         cliente.setStatus(clienteUpdate.getStatus());
-        cliente.setEndereco(clienteUpdate.getEndereco());
+        cliente.setEnderecos(clienteUpdate.getEnderecos());
         clienteRepository.save(cliente);
         return MessageResponseDTO
                 .builder()

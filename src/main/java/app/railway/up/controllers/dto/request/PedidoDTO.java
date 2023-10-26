@@ -1,4 +1,4 @@
-package app.railway.up.controller.dto.request;
+package app.railway.up.controllers.dto.request;
 
 import app.railway.up.model.Cliente;
 import app.railway.up.model.Item;

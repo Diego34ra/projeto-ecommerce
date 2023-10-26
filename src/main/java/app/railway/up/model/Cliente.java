@@ -23,13 +23,16 @@ public class Cliente {
 
     private String email;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private List<Endereco> enderecos;
-
     @Column(precision = 10,scale = 2)
     private BigDecimal limite;
 
     private String status;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private List<Telefone> telefones;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private List<Endereco> enderecos;
 
     @OneToMany(mappedBy = "cliente")
     @JsonIgnore

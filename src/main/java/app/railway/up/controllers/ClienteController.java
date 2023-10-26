@@ -1,14 +1,16 @@
-package app.railway.up.controller;
+package app.railway.up.controllers;
 
-import app.railway.up.controller.dto.request.ClienteDTO;
-import app.railway.up.controller.dto.request.MessageResponseDTO;
-import app.railway.up.controller.exceptions.ResourceNotFoundException;
+import app.railway.up.controllers.dto.request.ClienteDTO;
+import app.railway.up.controllers.dto.request.MessageResponseDTO;
+import app.railway.up.controllers.exceptions.ResourceNotFoundException;
 import app.railway.up.model.Cliente;
 import app.railway.up.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -22,6 +24,13 @@ public class ClienteController {
         var message = clienteService.create(clienteDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(message);
     }
+
+    @GetMapping
+    public ResponseEntity<List<Cliente>> findAll(){
+        List<Cliente> clientes = clienteService.findAll();
+        return ResponseEntity.status(HttpStatus.OK).body(clientes);
+    }
+
 
     @GetMapping("{id}")
     public ResponseEntity<Cliente> findById(@PathVariable Long id) throws ResourceNotFoundException {

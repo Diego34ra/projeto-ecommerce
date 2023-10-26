@@ -1,10 +1,9 @@
 package app.railway.up.service.impl;
 
-import app.railway.up.controller.dto.mapper.ProdutoMAPPER;
-import app.railway.up.controller.dto.request.MessageResponseDTO;
-import app.railway.up.controller.dto.request.PedidoDTO;
-import app.railway.up.controller.dto.request.ProdutoDTO;
-import app.railway.up.controller.exceptions.ResourceNotFoundException;
+import app.railway.up.controllers.dto.mapper.ProdutoMAPPER;
+import app.railway.up.controllers.dto.request.MessageResponseDTO;
+import app.railway.up.controllers.dto.request.ProdutoDTO;
+import app.railway.up.controllers.exceptions.ResourceNotFoundException;
 import app.railway.up.model.Produto;
 import app.railway.up.repository.ProdutoRepository;
 import app.railway.up.service.ProdutoService;

@@ -1,4 +1,4 @@
-package app.railway.up.controller.exceptions;
+package app.railway.up.controllers.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

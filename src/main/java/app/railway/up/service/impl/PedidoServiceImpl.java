@@ -1,27 +1,24 @@
 package app.railway.up.service.impl;
 
-import app.railway.up.controller.dto.mapper.PedidoMAPPER;
-import app.railway.up.controller.dto.request.MessageResponseDTO;
-import app.railway.up.controller.dto.request.PedidoDTO;
-import app.railway.up.controller.exceptions.ResourceNotFoundException;
+import app.railway.up.controllers.dto.mapper.PedidoMAPPER;
+import app.railway.up.controllers.dto.request.MessageResponseDTO;
+import app.railway.up.controllers.dto.request.PedidoDTO;
+import app.railway.up.controllers.exceptions.ResourceNotFoundException;
 import app.railway.up.model.Cliente;
 import app.railway.up.model.Item;
 import app.railway.up.model.Pedido;
 import app.railway.up.model.Produto;
 import app.railway.up.repository.PedidoRepository;
 import app.railway.up.service.ClienteService;
-import app.railway.up.service.ItemService;
 import app.railway.up.service.PedidoService;
 import app.railway.up.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class PedidoServiceImpl implements PedidoService {
@@ -50,6 +47,11 @@ public class PedidoServiceImpl implements PedidoService {
                 .status("Created")
                 .message("Pedido criado com sucesso.")
                 .build();
+    }
+
+    @Override
+    public List<Pedido> findAll() {
+        return pedidoRepository.findAll();
     }
 
     @Override

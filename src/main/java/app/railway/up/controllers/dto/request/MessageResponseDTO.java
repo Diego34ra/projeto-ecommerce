@@ -1,4 +1,4 @@
-package app.railway.up.controller.dto.request;
+package app.railway.up.controllers.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
