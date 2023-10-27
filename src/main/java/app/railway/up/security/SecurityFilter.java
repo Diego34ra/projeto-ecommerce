@@ -1,6 +1,6 @@
 package app.railway.up.security;
 
-import app.railway.up.repository.UserRepository;
+import app.railway.up.repository.UsuarioRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,7 +19,7 @@ public class SecurityFilter extends OncePerRequestFilter {
     @Autowired
     TokenService tokenService;
     @Autowired
-    UserRepository userRepository;
+    UsuarioRepository userRepository;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {

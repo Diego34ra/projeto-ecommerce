@@ -3,7 +3,7 @@ package app.railway.up.service;
 import app.railway.up.controllers.dto.request.MessageResponseDTO;
 import app.railway.up.controllers.dto.request.PedidoDTO;
 import app.railway.up.controllers.exceptions.ResourceNotFoundException;
-import app.railway.up.model.Pedido;
+import app.railway.up.domain.pedido.Pedido;
 
 import java.util.List;
 

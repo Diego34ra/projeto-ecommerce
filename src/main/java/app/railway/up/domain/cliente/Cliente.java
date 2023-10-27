@@ -1,5 +1,6 @@
-package app.railway.up.model;
+package app.railway.up.domain.cliente;
 
+import app.railway.up.domain.pedido.Pedido;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -26,7 +27,7 @@ public class Cliente {
     @Column(precision = 10,scale = 2)
     private BigDecimal limite;
 
-    private String status;
+    private ClienteStatus status;
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Telefone> telefones;

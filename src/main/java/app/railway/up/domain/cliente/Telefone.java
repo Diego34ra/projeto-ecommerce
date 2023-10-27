@@ -1,4 +1,4 @@
-package app.railway.up.model;
+package app.railway.up.domain.cliente;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
@@ -10,23 +10,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "tb_endereco")
+@Entity(name = "tb_telefone")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Endereco {
+public class Telefone {
 
     @Id
     @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String endereco;
-
-    private String complemento;
-
+    private String ddi;
+    private String ddd;
     private String numero;
-
-    private String cep;
 }

@@ -1,4 +1,4 @@
-package app.railway.up.model;
+package app.railway.up.domain.item;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

@@ -3,7 +3,7 @@ package app.railway.up.service;
 import app.railway.up.controllers.dto.request.MessageResponseDTO;
 import app.railway.up.controllers.dto.request.ProdutoDTO;
 import app.railway.up.controllers.exceptions.ResourceNotFoundException;
-import app.railway.up.model.Produto;
+import app.railway.up.domain.item.Produto;
 
 import java.util.List;
 

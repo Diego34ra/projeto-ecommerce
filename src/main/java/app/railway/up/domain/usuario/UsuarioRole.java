@@ -1,13 +1,13 @@
-package app.railway.up.model;
+package app.railway.up.domain.usuario;
 
-public enum UserRole {
+public enum UsuarioRole {
 
     ADMIN("admin"),
     USER("user");
 
     private String role;
 
-    UserRole(String role){
+    UsuarioRole(String role){
         this.role = role;
     }
 

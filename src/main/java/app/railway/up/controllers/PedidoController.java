@@ -3,7 +3,7 @@ package app.railway.up.controllers;
 import app.railway.up.controllers.dto.request.MessageResponseDTO;
 import app.railway.up.controllers.dto.request.PedidoDTO;
 import app.railway.up.controllers.exceptions.ResourceNotFoundException;
-import app.railway.up.model.Pedido;
+import app.railway.up.domain.pedido.Pedido;
 import app.railway.up.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -4,7 +4,8 @@ import app.railway.up.controllers.dto.mapper.ClienteMAPPER;
 import app.railway.up.controllers.dto.request.ClienteDTO;
 import app.railway.up.controllers.dto.request.MessageResponseDTO;
 import app.railway.up.controllers.exceptions.ResourceNotFoundException;
-import app.railway.up.model.Cliente;
+import app.railway.up.domain.cliente.Cliente;
+import app.railway.up.domain.cliente.ClienteStatus;
 import app.railway.up.repository.ClienteRepository;
 import app.railway.up.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public MessageResponseDTO create(ClienteDTO clienteDTO) {
         Cliente cliente = clienteMAPPER.toCliente(clienteDTO);
-        cliente.setStatus("PEN");
+        cliente.setStatus(ClienteStatus.valueOf("PEN"));
         clienteRepository.save(cliente);
         return MessageResponseDTO.builder()
                 .code(201)

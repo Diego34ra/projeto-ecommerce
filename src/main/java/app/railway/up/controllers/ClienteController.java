@@ -3,7 +3,7 @@ package app.railway.up.controllers;
 import app.railway.up.controllers.dto.request.ClienteDTO;
 import app.railway.up.controllers.dto.request.MessageResponseDTO;
 import app.railway.up.controllers.exceptions.ResourceNotFoundException;
-import app.railway.up.model.Cliente;
+import app.railway.up.domain.cliente.Cliente;
 import app.railway.up.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -52,7 +52,7 @@ public class ClienteController {
 
     @PatchMapping("{id}/status")
     public ResponseEntity<MessageResponseDTO> patchStatus(@PathVariable Long id, @RequestBody Cliente cliente) throws ResourceNotFoundException {
-        var message = clienteService.patchLimite(id,cliente);
+        var message = clienteService.patchStatus(id,cliente);
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }
 

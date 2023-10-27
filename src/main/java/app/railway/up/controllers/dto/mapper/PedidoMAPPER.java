@@ -1,7 +1,7 @@
 package app.railway.up.controllers.dto.mapper;
 
 import app.railway.up.controllers.dto.request.PedidoDTO;
-import app.railway.up.model.Pedido;
+import app.railway.up.domain.pedido.Pedido;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 

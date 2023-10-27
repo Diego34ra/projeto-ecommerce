@@ -1,6 +1,6 @@
 package app.railway.up.service.impl;
 
-import app.railway.up.model.Item;
+import app.railway.up.domain.item.Item;
 import app.railway.up.repository.ItemRepository;
 import app.railway.up.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;

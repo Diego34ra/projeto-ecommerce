@@ -1,6 +1,6 @@
 package app.railway.up.service;
 
-import app.railway.up.model.Item;
+import app.railway.up.domain.item.Item;
 
 import java.util.List;
 

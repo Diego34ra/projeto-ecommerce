@@ -19,29 +19,28 @@ public class OpenApiConfig {
     @Bean
     public OpenAPI myOpenAPI() {
         final String securitySchemeName = "bearerAuth";
-        final String apiTitle = String.format("%s API", StringUtils.capitalize("teste"));
 
         Server devServer = new Server();
         devServer.setUrl("http://localhost:8080");
-        devServer.setDescription("Server URL in Development environment");
+        devServer.setDescription("URL do servidor no ambiente de desenvolvimento");
 
-        Server prodServer = new Server();
-        prodServer.setUrl("http://localhost:8080");
-        prodServer.setDescription("Server URL in Production environment");
+//        Server prodServer = new Server();
+//        prodServer.setUrl("http://localhost:8080");
+//        prodServer.setDescription("Server URL in Production environment");
 
         Contact contact = new Contact();
-        contact.setEmail("");
-        contact.setName("");
-        contact.setUrl("");
+        contact.setEmail("diegoribeiro13ra@hotmail.com");
+        contact.setName("Diego Ribeiro Araújo");
+        contact.setUrl("mailto:diegoribeiro13ra@hotmail.com");
 
-        License mitLicense = new License().name("MIT License").url("https://choosealicense.com/licenses/mit/");
+//        License mitLicense = new License().name("MIT License").url("https://choosealicense.com/licenses/mit/");
 
         Info info = new Info()
-                .title("Demo Service API")
+                .title("Api Projeto Ecommerce")
                 .version("1.0")
                 .contact(contact)
-                .description("This API exposes endpoints to manage demo.").termsOfService("")
-                .license(mitLicense);
+                .description("Esta API apresenta os endpoints de um projeto de ecommerce.").termsOfService("");
+//                .license(mitLicense);
 
         return new OpenAPI()
                 .info(info)
@@ -55,7 +54,9 @@ public class OpenApiConfig {
                                         .bearerFormat("JWT")
                         )
                 )
-                .servers(List.of(devServer, prodServer));
+                .servers(List.of(devServer
+//                        , prodServer
+                ));
     }
 
 }

@@ -1,7 +1,7 @@
 package app.railway.up.controllers.dto.request;
 
-import app.railway.up.model.Cliente;
-import app.railway.up.model.Item;
+import app.railway.up.domain.cliente.Cliente;
+import app.railway.up.domain.item.Item;
 import lombok.Getter;
 import lombok.Setter;
 

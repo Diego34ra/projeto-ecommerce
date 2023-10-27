@@ -1,7 +1,7 @@
 package app.railway.up.controllers.dto.request;
 
-import app.railway.up.model.Endereco;
-import app.railway.up.model.Telefone;
+import app.railway.up.domain.cliente.Endereco;
+import app.railway.up.domain.cliente.Telefone;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,7 +1,7 @@
 package app.railway.up.controllers.dto.mapper;
 
 import app.railway.up.controllers.dto.request.ProdutoDTO;
-import app.railway.up.model.Produto;
+import app.railway.up.domain.item.Produto;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 

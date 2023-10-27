@@ -1,4 +1,4 @@
-package app.railway.up.model;
+package app.railway.up.domain.usuario;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,7 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class User implements UserDetails {
+public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -26,20 +26,25 @@ public class User implements UserDetails {
 
     private String login;
 
-    private String password;
+    private String senha;
 
-    private UserRole role;
+    private UsuarioRole role;
 
-    public User (String login, String password, UserRole role){
+    public Usuario(String login, String password, UsuarioRole role){
         this.login = login;
-        this.password = password;
+        this.senha = password;
         this.role = role;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(this.role == UserRole.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+        if(this.role == UsuarioRole.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
         else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+
+    @Override
+    public String getPassword() {
+        return senha;
     }
 
     @Override

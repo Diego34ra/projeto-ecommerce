@@ -1,5 +1,7 @@
-package app.railway.up.model;
+package app.railway.up.domain.pedido;
 
+import app.railway.up.domain.cliente.Cliente;
+import app.railway.up.domain.item.Item;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

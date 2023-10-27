@@ -1,6 +1,6 @@
 package app.railway.up.repository;
 
-import app.railway.up.model.Pedido;
+import app.railway.up.domain.pedido.Pedido;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

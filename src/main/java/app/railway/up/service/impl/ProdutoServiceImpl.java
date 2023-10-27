@@ -4,7 +4,7 @@ import app.railway.up.controllers.dto.mapper.ProdutoMAPPER;
 import app.railway.up.controllers.dto.request.MessageResponseDTO;
 import app.railway.up.controllers.dto.request.ProdutoDTO;
 import app.railway.up.controllers.exceptions.ResourceNotFoundException;
-import app.railway.up.model.Produto;
+import app.railway.up.domain.item.Produto;
 import app.railway.up.repository.ProdutoRepository;
 import app.railway.up.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
