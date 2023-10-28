@@ -45,7 +45,7 @@ Sinta-se à vontade para contribuir com melhorias, correções de bugs ou novos 
 
 ## Licença
 
-Este projeto está licenciado sob a Licença [Nome_da_Licença]. Consulte o arquivo [LICENSE.md](https://chat.openai.com/c/LICENSE.md) para obter detalhes.
+Este projeto está licenciado sob a Licença MIT. Consulte o arquivo LICENSE para obter detalhes.
 
 ## Contato
 
