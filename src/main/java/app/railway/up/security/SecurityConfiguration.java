@@ -1,5 +1,6 @@
 package app.railway.up.security;
 
+import app.railway.up.controllers.exceptions.CustomAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,8 +14,12 @@ import org.springframework.security.config.annotation.web.configurers.HeadersCon
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.AccessDeniedHandlerImpl;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import java.nio.file.AccessDeniedException;
 
 @Configuration
 @EnableWebSecurity
@@ -37,16 +42,26 @@ public class SecurityConfiguration {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(
                         authorize -> authorize
+                                .requestMatchers(SWAGGER_WHITELIST).permitAll()
                                 .requestMatchers(HttpMethod.POST,"/api/v1/auth/login").permitAll()
                                 .requestMatchers(HttpMethod.POST,"/api/v1/auth/register").permitAll()
-                                .requestMatchers(SWAGGER_WHITELIST).permitAll()
-//                                .requestMatchers("/api/v1/auth/**", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/api/v1/clientes").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.DELETE, "/api/v1/clientes").hasRole("ADMIN")
                                 .requestMatchers(HttpMethod.POST, "/api/v1/produtos").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.DELETE, "/api/v1/produtos").hasRole("ADMIN")
                                 .anyRequest().authenticated()
+
                 )
+                .exceptionHandling(httpSecurityExceptionHandlingConfigurer -> httpSecurityExceptionHandlingConfigurer.authenticationEntryPoint(accessDeniedException()))
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build()
+
                 ;
+    }
+
+    @Bean
+    public AuthenticationEntryPoint accessDeniedException(){
+        return new CustomAuthenticationEntryPoint();
     }
 
     @Bean
