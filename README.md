@@ -1,5 +1,5 @@
 
-# Projeto de Mini Aplicação de E-commerce (Nome do Projeto)
+# Projeto E-commerce (projeto-ecommerce)
 
 ## Descrição do Projeto
 
