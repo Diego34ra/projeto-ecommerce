@@ -5,6 +5,62 @@
 
 Este projeto é uma mini aplicação de e-commerce que fornece uma API RESTful para gerenciar produtos, clientes e pedidos. Foi desenvolvido em Spring Boot, utilizando Java 17, com recursos de segurança implementados usando o Spring Security para a criação de tokens que validam permissões de acesso aos endpoints. Além disso, o projeto inclui uma documentação completa da API, disponibilizada via Swagger, facilitando o uso e a compreensão dos endpoints e recursos oferecidos. O projeto está hospedado na plataforma Railway para possibilitar o acesso externo.
 
+## Diagrama de classe
+
+``` mermaid
+classDiagram
+  class Produto {
+    id: long
+    nome: string
+    preco: bigdecimal
+    ean: string
+    qtUnit: long
+    estoque: long
+  }
+
+  class Endereco {
+    id: long
+    endereco: string
+    complemento: string
+    numero: string
+    cep: string
+  }
+
+  class Telefone {
+    id: long
+    ddi: string
+    ddd: string
+    numero: string
+  }
+
+  class Cliente {
+    id: long
+    nome: string
+    email: string
+    status: enum
+    enderecos: Endereco[]
+    telefones: Telefone[]
+    limite: bigdecimal
+  }
+
+  class Pedido {
+    cliente: Cliente
+    items: ItemPedido[]
+  }
+
+  class ItemPedido {
+    id: long
+    produto: Produto
+    quantidade: long
+  }
+
+  Produto --|> ItemPedido
+  Cliente "1" --o "n" Endereco : tem
+  Cliente "1" --o "n" Telefone : tem
+  Pedido "1" --o "n" ItemPedido : contém
+
+```
+
 ## Recursos e Funcionalidades
 
 -   **Gestão de Produtos:** Adicione, atualize, consulte e exclua produtos.
