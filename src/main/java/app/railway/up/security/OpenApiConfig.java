@@ -24,9 +24,9 @@ public class OpenApiConfig {
         devServer.setUrl("http://localhost:8080");
         devServer.setDescription("URL do servidor no ambiente de desenvolvimento");
 
-//        Server prodServer = new Server();
-//        prodServer.setUrl("http://localhost:8080");
-//        prodServer.setDescription("Server URL in Production environment");
+        Server prodServer = new Server();
+        prodServer.setUrl("https://projeto-ecommerce-production.up.railway.app");
+        prodServer.setDescription("URL do servidor no ambiente de produção");
 
         Contact contact = new Contact();
         contact.setEmail("diegoribeiro13ra@hotmail.com");
