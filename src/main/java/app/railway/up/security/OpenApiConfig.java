@@ -54,9 +54,7 @@ public class OpenApiConfig {
                                         .bearerFormat("JWT")
                         )
                 )
-                .servers(List.of(devServer
-                        , prodServer
-                ));
+                .servers(List.of(devServer,prodServer));
     }
 
 }

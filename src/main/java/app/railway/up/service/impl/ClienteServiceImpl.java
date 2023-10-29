@@ -66,6 +66,7 @@ public class ClienteServiceImpl implements ClienteService {
         cliente.setEmail(clienteUpdate.getEmail());
         cliente.setStatus(clienteUpdate.getStatus());
         cliente.setEnderecos(clienteUpdate.getEnderecos());
+        cliente.setTelefones(clienteUpdate.getTelefones());
         clienteRepository.save(cliente);
         return MessageResponseDTO
                 .builder()

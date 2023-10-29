@@ -79,7 +79,7 @@ public class PedidoController {
             @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema( description = "Pedido não encontrado."),
                     examples = @ExampleObject( value = EXAMPLE_ORDER_NOT_FOUND))})
     })
-    public ResponseEntity<MessageResponseDTO> deleteById(Long id) throws ResourceNotFoundException {
+    public ResponseEntity<MessageResponseDTO> deleteById(@PathVariable Long id) throws ResourceNotFoundException {
         var message = pedidoService.deleteById(id);
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }
