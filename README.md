@@ -90,9 +90,7 @@ classDiagram
     mvn spring-boot:run
     ``` 
 
-3.  **Documentação da API:** Acesse a documentação da API em [URL_do_Swagger].
-
-4.  **Implantação Externa:** O projeto está hospedado no Railway, e você pode acessá-lo em [URL_do_Projeto].
+3.  **Documentação da API:** Acesse a documentação da API em https://projeto-ecommerce-production.up.railway.app/swagger-ui/index.html#/. Essa aplicação foi hospedada no Railway, ou seja cada alteração feita será salva no banco de dados. A documentação também está disponível via postman em https://documenter.getpostman.com/view/21508240/2s9YRGy9MZ#16fe21f3-8cc9-40c1-986b-34a745a4dcd5.
 
 
 ## Contribuição
