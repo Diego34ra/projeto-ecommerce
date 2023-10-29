@@ -55,7 +55,7 @@ public class OpenApiConfig {
                         )
                 )
                 .servers(List.of(devServer
-//                        , prodServer
+                        , prodServer
                 ));
     }
 
