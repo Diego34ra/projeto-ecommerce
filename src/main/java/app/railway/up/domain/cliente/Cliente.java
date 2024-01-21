@@ -4,6 +4,7 @@ import app.railway.up.domain.pedido.Pedido;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -27,6 +28,7 @@ public class Cliente {
     @Column(precision = 10,scale = 2)
     private BigDecimal limite;
 
+    @ColumnDefault("'PEN'")
     private ClienteStatus status;
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)

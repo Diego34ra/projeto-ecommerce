@@ -26,7 +26,6 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public MessageResponseDTO create(ClienteDTO clienteDTO) {
         Cliente cliente = clienteMAPPER.toCliente(clienteDTO);
-        cliente.setStatus(ClienteStatus.valueOf("PEN"));
         clienteRepository.save(cliente);
         return MessageResponseDTO.builder()
                 .code(201)
